@@ -1,0 +1,67 @@
+version: 2
+models:
+  - name: raw_customers
+    description: Ban sao dang table cua RAW.GLOBALMART.CUSTOMERS.
+    columns:
+      - name: customerid
+        data_tests: [not_null]
+  - name: raw_products
+    description: Ban sao dang table cua RAW.GLOBALMART.PRODUCTS.
+    columns:
+      - name: productid
+        data_tests: [not_null]
+  - name: raw_orders
+    description: Don hang goc, giu nguyen gia von va gia ban.
+    columns:
+      - name: orderid
+        data_tests: [not_null]
+      - name: customerid
+        data_tests:
+          - not_null:
+              config:
+                severity: warn
+          - relationships:
+              arguments:
+                to: ref('raw_customers')
+                field: customerid
+      - name: productid
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('raw_products')
+                field: productid
+      - name: ordercostprice
+        data_tests: [not_null]
+      - name: ordersellingprice
+        data_tests:
+          - not_null:
+              config:
+                severity: warn
+  - name: stg_orders
+    description: View don hang noi khach hang va san pham; orderprofit bang gia ban tru gia von.
+    columns:
+      - name: orderid
+        data_tests: [not_null]
+      - name: orderprofit
+        data_tests:
+          - not_null:
+              config:
+                severity: warn
+  - name: customer_profit
+    description: View loi nhuan theo khach hang, phan khuc va quoc gia.
+    columns:
+      - name: customerid
+        data_tests:
+          - not_null:
+              config:
+                severity: warn
+      - name: profit
+        data_tests: [not_null]
+  - name: product_profit
+    description: View loi nhuan theo san pham va danh muc.
+    columns:
+      - name: productid
+        data_tests: [not_null]
+      - name: profit
+        data_tests: [not_null]

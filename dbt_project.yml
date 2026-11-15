@@ -1,0 +1,15 @@
+name: globalmart
+version: '1.0.0'
+config-version: 2
+profile: globalmart
+model-paths: [models]
+test-paths: [tests]
+clean-targets: [target, dbt_packages]
+models:
+  globalmart:
+    raw:
+      +materialized: table
+    staging:
+      +materialized: view
+    reporting:
+      +materialized: view

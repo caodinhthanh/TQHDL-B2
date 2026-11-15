@@ -1,0 +1,19 @@
+version: 2
+sources:
+  - name: globalmart
+    database: RAW
+    schema: GLOBALMART
+    description: Ba bang CSV goc cua bai thuc hanh GlobalMart.
+    tables:
+      - name: customers
+        columns:
+          - name: customerid
+            data_tests: [not_null]
+      - name: products
+        columns:
+          - name: productid
+            data_tests: [not_null]
+      - name: orders
+        columns:
+          - name: orderid
+            data_tests: [not_null]

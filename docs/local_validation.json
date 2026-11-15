@@ -1,0 +1,52 @@
+{
+  "engine": "SQLite local SQL verification; not a Snowflake execution",
+  "source_rows": {
+    "customers": 793,
+    "orders": 9800,
+    "products": 1893
+  },
+  "staging_rows": 9800,
+  "report_rows": {
+    "customer_profit": 794,
+    "product_profit": 1861
+  },
+  "profit_totals": {
+    "stg_orders": "670743.00",
+    "customer_profit": "670743.00",
+    "product_profit": "670743.00"
+  },
+  "checks": {
+    "assert_customer_unique": {
+      "rows": 0,
+      "status": "PASS"
+    },
+    "assert_no_join_fanout": {
+      "rows": 0,
+      "status": "PASS"
+    },
+    "assert_order_line_unique": {
+      "rows": 0,
+      "status": "PASS"
+    },
+    "assert_order_relationships": {
+      "rows": 0,
+      "status": "PASS"
+    },
+    "assert_profit_reconciles": {
+      "rows": 0,
+      "status": "PASS"
+    },
+    "assert_source_profit_preserved": {
+      "rows": 0,
+      "status": "PASS"
+    },
+    "warn_conflicting_product_names": {
+      "rows": 32,
+      "status": "WARN"
+    },
+    "warn_missing_order_values": {
+      "rows": 13,
+      "status": "WARN"
+    }
+  }
+}
